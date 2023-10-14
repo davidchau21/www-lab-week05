@@ -11,4 +11,4 @@
 Chạy lệnh sau để tạo dự án:
 >> mvn spring-boot:run
 
-Truy cập vào ứng dụng tại địa chỉ http://localhost:8080.
+<!--Truy cập vào ứng dụng tại địa chỉ http://localhost:8080. -->
