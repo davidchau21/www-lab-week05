@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "job")
 @NoArgsConstructor
@@ -23,6 +25,8 @@ public class Job {
     private String jobName = null;
 
     @ManyToOne
-    @JoinColumn(name = "company")
-    private Company company = null;
+    private Company company;
+
+    @OneToMany(mappedBy = "job")
+    private List<JobSkill> jobSkills;
 }

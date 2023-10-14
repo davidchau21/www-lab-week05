@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "candidate")
@@ -34,6 +36,15 @@ public class Candidate {
     @JoinColumn(name = "address")
     private  Address address;
 
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
+    private List<Experiences> experiences;
+
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
+    private List<CandidateSkill> candidateSkills;
+
+
+    public Candidate(String s, LocalDate of, Address add, String s1, String s2) {
+    }
 
 
 }

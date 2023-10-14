@@ -1,5 +1,6 @@
 package vn.com.iuh.fit.models;
 
+import com.neovisionaries.i18n.CountryCode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,11 +35,4 @@ public class Address {
     @Column(name = "zipcode", columnDefinition = "varchar(30)")
     private String zipcode;
 
-    public Address(String street, String city, Country country, String number, String zipcode) {
-        this.street = street;
-        this.city = city;
-        this.country = country;
-        this.number = number;
-        this.zipcode = zipcode;
-    }
 }

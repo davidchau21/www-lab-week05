@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "company")
 @NoArgsConstructor
@@ -29,7 +31,9 @@ public class Company {
     @Column(columnDefinition = "varchar(255)", name = "web_url")
     private String webUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "address")
+    @OneToOne
     private Address address;
+
+    @OneToMany(mappedBy = "company")
+    private List<Job> jobs;
 }

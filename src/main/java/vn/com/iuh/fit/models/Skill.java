@@ -3,6 +3,8 @@ package vn.com.iuh.fit.models;
 import jakarta.persistence.*;
 import vn.com.iuh.fit.enums.SkillType;
 
+import java.util.List;
+
 @Entity
 public class Skill {
     @Id
@@ -16,7 +18,11 @@ public class Skill {
     @Column(name = "skill_name", columnDefinition = "varchar(255)")
     private String skillName=null;
 
+    @Enumerated
     @Column(name = "skill_type")
     private SkillType type;
+
+    @OneToMany(mappedBy = "skill")
+    private List<JobSkill> jobSkills;
 
 }

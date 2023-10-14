@@ -17,6 +17,7 @@ public class JobSkill {
     @Column(name = "more_infos", columnDefinition = "varchar(1000)")
     private String moreInfos=null;
 
+    @Enumerated
     @Column(name = "skill_level")
     private SkillLevel skillLevel=null;
 
