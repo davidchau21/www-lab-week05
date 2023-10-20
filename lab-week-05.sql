@@ -16,8 +16,8 @@
 
 
 -- Dumping database structure for works
-CREATE DATABASE IF NOT EXISTS `works` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
-USE `works`;
+CREATE DATABASE IF NOT EXISTS `dblab5` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
+USE `dblab5`;
 
 -- Dumping structure for table works.address
 CREATE TABLE IF NOT EXISTS `address` (
