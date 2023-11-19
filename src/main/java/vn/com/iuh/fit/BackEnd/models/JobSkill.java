@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import vn.com.iuh.fit.BackEnd.enums.SkillLevel;
+import vn.com.iuh.fit.BackEnd.ids.JobSkill_ID;
 
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@IdClass(JobSkill_ID.class)
 public class JobSkill {
     @Id
     @ManyToOne
