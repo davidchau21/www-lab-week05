@@ -5,16 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import vn.com.iuh.fit.BackEnd.enums.SkillLevel;
-import vn.com.iuh.fit.BackEnd.ids.CandidateSkill_ID;
+import vn.com.iuh.fit.BackEnd.ids.CandidateSkillID;
 
-import java.util.Objects;
 
 @Entity
 @Table(name = "candidate_skill")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@IdClass(CandidateSkill_ID.class)
-@Data
+@IdClass(CandidateSkillID.class)
 public class CandidateSkill {
     @Id
     @ManyToOne
@@ -28,25 +27,6 @@ public class CandidateSkill {
 
     @Column(name = "skill_level", nullable = false)
     private SkillLevel skillLevel;
-
     @Column(name = "more_infos", length = 1000)
     private String moreInfo;
-
-    public CandidateSkill(Candidate candidate, Skill skill) {
-        this.candidate = candidate;
-        this.skill = skill;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CandidateSkill that = (CandidateSkill) o;
-        return Objects.equals(candidate, that.candidate) && Objects.equals(skill, that.skill);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(candidate, skill);
-    }
 }

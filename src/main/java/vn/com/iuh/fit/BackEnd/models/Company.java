@@ -9,11 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "company")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class Company {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "com_id")
@@ -38,6 +37,8 @@ public class Company {
     @Column(name = "about", length = 2000)
     private String about;
 
+    //==================RELATIONSHIPS=====================
     @OneToMany(mappedBy = "company")
+//    @JoinColumn(name = "jobs")
     private List<Job> jobs;
 }

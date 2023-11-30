@@ -5,16 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import vn.com.iuh.fit.BackEnd.enums.SkillLevel;
-import vn.com.iuh.fit.BackEnd.ids.JobSkill_ID;
+import vn.com.iuh.fit.BackEnd.ids.JobSkillID;
 
-import java.util.Objects;
 
 @Entity
 @Table(name = "job_skill")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@IdClass(JobSkill_ID.class)
+@IdClass(JobSkillID.class)
 public class JobSkill {
     @Id
     @ManyToOne
@@ -28,8 +27,6 @@ public class JobSkill {
 
     @Column(name = "skill_level", nullable = false)
     private SkillLevel skillLevel;
-
     @Column(name = "more_infos", length = 1000)
     private String moreInfo;
-
 }

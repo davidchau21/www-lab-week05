@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "candidate")
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@NoArgsConstructor @AllArgsConstructor
 public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,13 +44,10 @@ public class Candidate {
         this.email = email;
     }
 
-
+    //====================RELATIONSHIPS========================
     @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
-    private List<Experiences> experiences;
+    private List<Experience> experiences;
 
     @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
     private List<CandidateSkill> candidateSkills;
-
-
-
 }

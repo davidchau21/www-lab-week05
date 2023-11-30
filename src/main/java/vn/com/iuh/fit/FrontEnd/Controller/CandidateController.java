@@ -11,8 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.com.iuh.fit.BackEnd.models.Address;
 import vn.com.iuh.fit.BackEnd.models.Candidate;
 import vn.com.iuh.fit.BackEnd.repositories.AddressRepository;
-import vn.com.iuh.fit.BackEnd.repositories.CandidateReponsitory;
-import vn.com.iuh.fit.BackEnd.services.CandidateService;
+import vn.com.iuh.fit.BackEnd.repositories.CandidateRepository;
+import vn.com.iuh.fit.BackEnd.services.CandidateServices;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +22,11 @@ import java.util.stream.IntStream;
 @Controller
 public class CandidateController {
     @Autowired
-    private CandidateReponsitory candidateRepository;
+    private CandidateRepository candidateRepository;
+
     @Autowired
-    private CandidateService candidateServices;
+    private CandidateServices candidateServices;
+
     @Autowired
     private AddressRepository addressRepository;
 
@@ -37,22 +39,24 @@ public class CandidateController {
     @GetMapping("/candidates")
     public String showCandidateListPaging(Model model,
                                           @RequestParam("page") Optional<Integer> page,
-                                          @RequestParam("size") Optional<Integer> size){
+                                          @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(10);
-
-        Page<Candidate> candidatePage = candidateServices.findAll(currentPage -1,
+        /*Page<Candidate> candidatePage= candidateServices.findPaginated(
+                PageRequest.of(currentPage - 1, pageSize)
+        );*/
+        Page<Candidate> candidatePage = candidateServices.findAll(currentPage - 1,
                 pageSize, "id", "asc");
+
         model.addAttribute("candidatePage", candidatePage);
 
         int totalPages = candidatePage.getTotalPages();
-        if(totalPages > 0){
-            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
-
         return "candidates/list";
     }
 

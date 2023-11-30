@@ -1,4 +1,5 @@
 package vn.com.iuh.fit.BackEnd.models;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,9 +7,11 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity(name = "experiences")
-@Data @NoArgsConstructor @AllArgsConstructor
-public class Experiences {
+@Entity
+@Data
+@NoArgsConstructor @AllArgsConstructor
+@Table(name = "experience")
+public class Experience {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exp_id")
     private long id;
@@ -23,6 +26,7 @@ public class Experiences {
     @Column(name = "work_desc",nullable = false, length = 400)
     private String workDescription;
 
+    //=============================RELATIONSHIPS====================
     @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "can_id")
     private Candidate candidate;

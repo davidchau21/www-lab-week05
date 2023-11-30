@@ -2,7 +2,10 @@ package vn.com.iuh.fit.BackEnd.models;
 
 import com.neovisionaries.i18n.CountryCode;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "address")
@@ -26,6 +29,7 @@ public class Address {
     @Column(name = "country", length = 30)
     private CountryCode country = CountryCode.VN;
 
+
     public Address(String number, String street, String city, String zipcode, CountryCode country) {
         this.number = number;
         this.street = street;
@@ -34,4 +38,8 @@ public class Address {
         this.country = country;
     }
 
+    @Override
+    public String toString() {
+        return number + ", " + street + ", " + city + ", " + zipcode + ", " + country.getName();
+    }
 }

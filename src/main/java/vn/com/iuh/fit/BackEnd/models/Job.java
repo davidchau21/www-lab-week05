@@ -9,9 +9,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "job")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class Job {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "job_id")
@@ -21,6 +21,8 @@ public class Job {
     @Column(name = "job_desc", length = 2000, nullable = false)
     private String description;
 
+
+//====================RELATIONSHIPS========================
     @ManyToOne
     @JoinColumn(name = "company")
     private Company company;
