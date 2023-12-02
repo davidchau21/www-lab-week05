@@ -36,8 +36,11 @@
                 <td th:text="${candidate.address}"></td>
                 <td th:text="${candidate.phone}"></td>
                 <td th:text="${candidate.email}"></td>
-                <td><a th:href="@{/edit/{id}(id=${candidate.id})}">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${candidate.id})}">Delete</a></td>
+                <td><a th:href="@{/candidates/show-edit-form/{id}(id=${candidate.id})}">Edit</a></td>
+                <td><form th:action="@{/candidates/delete/{id}(id=${candidate.id})}" method="post">
+                    <!-- Thêm nút submit để kích hoạt yêu cầu POST -->
+                    <button type="submit">Delete</button>
+                </form></td>
             </tr>
             </tbody>
         </table>

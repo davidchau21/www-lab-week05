@@ -39,17 +39,20 @@
         <td th:text="${candidate.address}"></td>
         <td th:text="${candidate.phone}"></td>
         <td th:text="${candidate.email}"></td>
-        <td><a th:href="@{show-edit-form/{id}(id=${candidate.id})}">Edit</a></td>
-        <td><a th:href="@{/delete/{id}(id=${candidate.id})}">Delete</a></td>
+        <td><a th:href="@{/candidates/show-edit-form/{id}(id=${candidate.id})}" data-method="get">Edit</a></td>
+        <td><form th:action="@{/candidates/delete/{id}(id=${candidate.id})}" method="post">
+            <!-- Thêm nút submit để kích hoạt yêu cầu POST -->
+            <button type="submit">Delete</button>
+        </form></td>
     </tr>
     </tbody>
 </table>
 <div class="inline" th:if="${candidatePage.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
-    <a th:href="@{/candidates(size=${candidatePage.size}, page=${pageNumber})}"
+    <a th:href="@{/candidates/list(page=${pageNumber}, size=${candidatePage.size})}"
        th:text="${pageNumber}"
-       th:class="${pageNumber==candidatePage.number + 1} ? active"></a>
+       th:class="${pageNumber == candidatePage.number + 1} ? active"></a>
 </div>
 <br/>
-<div class="inline"><a href="/show-add-form">Add a new Candidate</a></div>
+<div class="inline"><a href="/candidates/show-add-form">Add a new Candidate</a></div>
 </body>
 </html>

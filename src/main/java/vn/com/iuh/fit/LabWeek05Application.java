@@ -1,4 +1,4 @@
-package vn.com.iuh.fit.BackEnd;
+package vn.com.iuh.fit;
 
 import com.neovisionaries.i18n.CountryCode;
 import org.springframework.beans.factory.annotation.Autowired;
